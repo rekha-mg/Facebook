@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+.card {
+	margin-top: 30px;
+	margin-left: 300px;
+	border: 1px solid green;
+	border-radius: 1rem;
+	width: 25rem;
+	padding:10px;
+}
+.post_div{
+	margin-top: 30px;
+	margin-left: 300px;
+	width: 18rem;
+	padding: 10px;
+}
+img{
+	 margin-left: 5px;
+	 border-radius: 1rem;
+}
+body{
+	background-image:url('flower.jpg');
+	background-repeat: no-repeat;
+	 background-size: cover;
+}
+</style>
+<script type="text/javascript">
+	var  text_conent="";    // Textarea data stored
+    var  display="";        // To display Post data 
+    var  id=1;               // id for data display
+    var  image_path;
+	function  loadcard(){
+		
+	image_path=" ";
+	
+		if(image_path === " "){
+	    	text_conent = document.getElementById("myTextarea").value;
+	    	display = '<div class="card"  class="col d-flex justify-content-center"><div class="card-body">';
+		    display += '<h4 class="card-title"></h4>';
+		    display += '<p class="card-text">'+ text_conent + '</p>';
+		    display += '</div>';
+			display += '</div> ';
+			$(".content").append(display);
+			document.getElementById("myTextarea").value="";
+
+		}
+
+		if(text_conent === ""){
+			image_path = document.getElementById("Image").files[0].name;
+			alert(image_path);
+			display = '<div class="card"  class="col d-flex justify-content-center"><div class="card-body">';
+		    display += '<h4 class="card-title"></h4>';
+		    display += '<p class="card-text"></p>';
+		   	display += '<img src="'+ image_path +'" style="width:250px; height: 300px" >';
+		  	display += '</div>';
+			display += '</div> ';
+			$(".content").append(display);
+			image_path="";
+		}
+
+
+    
+	}
+
+</script>
+</head>
+<body>
+
+<div class="sidebar">
+  <a class="active" href="#home">FaceBook </a>
+  
+</div>
+ 	<div class="post_div">
+    	<table>
+      	<tr>
+      	<td> <textarea rows="4" cols="50" id="myTextarea">
+        </textarea> </td>
+        <td> </td> <td> </td> <td> </td><td> </td><td> </td>
+        <td> <label> Upload Image </label></td>
+        <td> <label> <input type="file" id="Image"> </label></td>
+        <td> <button type="button" class="btn btn-primary" onclick="loadcard()">POST</button>
+        </td> 
+    </tr>
+  </table>
+  
+  </div>
+<div class="content">
+
+	
+ <div >
+ 	<br>
+ 
+ </div>
+</div>
+
+</body>
+</html>

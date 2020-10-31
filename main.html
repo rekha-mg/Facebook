@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  
+  
+  <style type="text/css">
+    
+    .sidebar_div{
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      background-color: #f1f1f1;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+    }
+    div.content_div {
+      margin-left: 200px;
+      padding: 1px 1px;
+      height: 1000px;
+    }
+    .heading_div{
+      height: 100px;
+      border-bottom: 1px solid black;
+    }
+
+    .post_div{
+      height: 150px;
+      border-bottom: 1px solid black;
+    }
+    td{
+      padding: 10px;
+    }
+   /* .row{
+      padding: 0px;
+      height: 100px;
+      border-bottom: 1px solid black;
+    } */
+
+  </style>
+  <script type="text/javascript">
+    var  text_conent="";    // Textarea data stored
+    var  display="";        // To display Post data 
+    var  id=1;               // id for data display
+    var  image_path;
+
+  function myFunction() {
+
+    text_conent = document.getElementById("myTextarea").value;
+    image_path = document.getElementById("Image").files[0].name;
+    
+    // image path, width,height are set
+    var img = document.createElement("img");
+    img.src = image_path;
+    img.style.width="500px";
+    img.style.heigth="300px;"
+
+    // Display image at div (id= x)
+    //var src = document.getElementById("x");
+    //src.append(img);
+
+
+
+    //Display text content at div (id = display_post_div)
+
+
+  
+      display =  '<div class="card" style="width:400px"> <img class="card-img-top" src='+ image_path +' alt="Card image" style="width:40%"><div class="card-body"> <h4 class="card-title"> </h4> <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p> <a href="#" class="btn btn-primary">See Profile</a> </div> </div>'+text_conent+'</div>';
+  
+   
+   
+    display += '</div>';
+    $(".display_post_div").append(display);
+
+  }
+</script>
+</head>
+<body>
+  
+<div class="sidebar_div">
+  <h2>FACEBOOK</h2>
+</div>
+<div class="content_div">
+  <div class="heading_div">
+  </div>
+  <div class="post_div">
+    <table>
+      <tr>
+       <td> <textarea rows="4" cols="50" id="myTextarea">
+           </textarea> </td>
+        <td> </td> <td> </td> <td> </td><td> </td><td> </td>
+        <td> <label> Upload Image </label></td>
+        <td> <label> <input type="file" id="Image"> </label></td>
+        <td> <button type="button" class="btn btn-primary" onclick="myFunction()">POST</button>
+        </td> 
+    </tr>
+  </table>
+  
+  </div>
+  <div class="display_post_div">
+  </div>
+  <div id="x">
+  </div>
+
+</div>
+  
+  
+
+
+</body>
+</html>
